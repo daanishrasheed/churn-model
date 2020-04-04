@@ -10,3 +10,9 @@ PROCESSED_DATA_DIRECTORY = os.path.join(DATA_DIRECTORY, 'processed')
 
 # File paths - Raw data
 RAW_DATA_PATH = os.path.join(RAW_DATA_DIRECTORY, 'WA_Fn-UseC_-Telco-Customer-Churn.csv')
+
+# Raw train-test-split data
+X_TRAIN_RAW_PATH = os.path.join(RAW_DATA_DIRECTORY, 'X_train.csv')
+X_TEST_RAW_PATH = os.path.join(RAW_DATA_DIRECTORY, 'X_test.csv')
+Y_TRAIN_RAW_PATH = os.path.join(RAW_DATA_DIRECTORY, 'y_train.csv')
+Y_TEST_RAW_PATH = os.path.join(RAW_DATA_DIRECTORY, 'y_test.csv')
