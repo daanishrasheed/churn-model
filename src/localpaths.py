@@ -16,3 +16,7 @@ X_TRAIN_RAW_PATH = os.path.join(RAW_DATA_DIRECTORY, 'X_train.csv')
 X_TEST_RAW_PATH = os.path.join(RAW_DATA_DIRECTORY, 'X_test.csv')
 Y_TRAIN_RAW_PATH = os.path.join(RAW_DATA_DIRECTORY, 'y_train.csv')
 Y_TEST_RAW_PATH = os.path.join(RAW_DATA_DIRECTORY, 'y_test.csv')
+
+# File paths - Clean train-test split data
+X_TRAIN_CLEAN_PATH = os.path.join(INTERIM_DATA_DIRECTORY, 'X_train.csv')
+Y_TRAIN_CLEAN_PATH = os.path.join(INTERIM_DATA_DIRECTORY, 'y_train.csv')

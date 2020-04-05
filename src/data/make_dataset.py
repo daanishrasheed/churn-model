@@ -43,11 +43,15 @@ def create_clean_training_data():
     y_train.to_csv(Y_TRAIN_CLEAN_PATH, index=False)
 
 
-def load_training_data():
+def load_training_data(clean=False):
     """Return x_train and y_train
     """
-    X_train=pd.read_csv(X_TRAIN_RAW_PATH)
-    y_train=pd.read_csv(Y_TRAIN_RAW_PATH)
+    if clean:
+        X_train = pd.read_csv(X_TRAIN_CLEAN_PATH)
+        y_train = pd.read_csv(Y_TRAIN_CLEAN_PATH)
+    else:
+        X_train=pd.read_csv(X_TRAIN_RAW_PATH)
+        y_train=pd.read_csv(Y_TRAIN_RAW_PATH)
 
     return X_train, y_train
 
