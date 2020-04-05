@@ -25,6 +25,23 @@ def create_train_test_split():
     y_train.to_csv(Y_TRAIN_RAW_PATH, index = False)
     y_test.to_csv(Y_TEST_RAW_PATH, index = False)
 
+@cli.command()
+def create_clean_training_data():
+    """Reads in raw X and y training data, clean it, and writes clean
+    training data out to the data/interim directory.
+    """
+    print('loading data')
+    X_train, y_train = load_training_data()
+
+    print('cleaning data')
+    bad_values_idxs = X_train[X_train['TotalCharges']== ' '].index
+    X_train.loc[bad_values_idxs, 'TotalCharges'] = 20
+    X_train['TotalCharges']=X_train['TotalCharges'].astype(float)
+
+    print('writing data files')
+    X_train.to_csv(X_TRAIN_CLEAN_PATH, index=False)
+    y_train.to_csv(Y_TRAIN_CLEAN_PATH, index=False)
+
 
 def load_training_data():
     """Return x_train and y_train
