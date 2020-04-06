@@ -10,6 +10,18 @@ from src.data.make_dataset import load_training_data
 def cli():
     pass
 
+def featurize_X_train(X_train):
+    """Applies all featurization steps to X_train
+    """
+    X_train = drop_customer_id(X_train)
+    X_train['gender']=X_train['gender'].map({'Female': 1, 'Male': 0})
+    X_train['Partner']=X_train['Partner'].map({'Yes': 1, 'No': 0})
+    X_train['Dependents']=X_train['Dependents'].map({'Yes': 1, 'No': 0})
+    X_train['PhoneService']=X_train['PhoneService'].map({'Yes': 1, 'No': 0})
+    X_train['PaperlessBilling']=X_train['PaperlessBilling'].map({'Yes': 1, 'No': 0})
+    return X_train
+
+
 @cli.command()
 def create_featurized_data():
     """Creates X and y training set files for modeling
@@ -19,12 +31,7 @@ def create_featurized_data():
     X_train, y_train = load_training_data(clean=True)
 
     print('featurizing data')
-    X_train = drop_customer_id(X_train)
-    X_train['gender']=X_train['gender'].map({'Female': 1, 'Male': 0})
-    X_train['Partner']=X_train['Partner'].map({'Yes': 1, 'No': 0})
-    X_train['Dependents']=X_train['Dependents'].map({'Yes': 1, 'No': 0})
-    X_train['PhoneService']=X_train['PhoneService'].map({'Yes': 1, 'No': 0})
-    X_train['PaperlessBilling']=X_train['PaperlessBilling'].map({'Yes': 1, 'No': 0})
+    X_train = featurize_X_train(X_train)
     y_train = transform_target(y_train)
 
     print('saving data')
