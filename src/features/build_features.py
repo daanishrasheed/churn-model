@@ -25,7 +25,8 @@ def create_featurized_data():
     X_train['Dependents']=X_train['Dependents'].map({'Yes': 1, 'No': 0})
     X_train['PhoneService']=X_train['PhoneService'].map({'Yes': 1, 'No': 0})
     X_train['PaperlessBilling']=X_train['PaperlessBilling'].map({'Yes': 1, 'No': 0})
-    
+    y_train = transform_target(y_train)
+
     print('saving data')
     X_train.to_csv(X_TRAIN_FEATURIZED_PATH, index=False)
     y_train.to_csv(Y_TRAIN_FEATURIZED_PATH, index=False)
@@ -38,6 +39,12 @@ def drop_customer_id(X_train):
 
     return X_train
 
+def transform_target(y_train):
+    """Transform target into zeros and ones for modeling
+    """
+    y_train['Churn'] = y_train['Churn'].map({'Yes': 1, 'No': 0})
+
+    return y_train
 
 if __name__ == "__main__":
     cli()
