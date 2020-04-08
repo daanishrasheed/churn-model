@@ -55,5 +55,19 @@ def store_model_and_results(model, X_train, y_train):
         print('model results file does not exist -- creating new model results CSV file and writing results')
     df_results.to_csv(model_results_filepath, index=False)
 
+
+def print_model_results(model, X_train, y_train):
+    """Prints model evaluation metrics
+    """
+
+    metrics = ['accuracy', 'precision', 'recall', 'f1', 'roc_auc']
+    for metric in metrics:
+        metric_value = np.mean(cross_val_score(model, X_train, y_train['Churn'], cv=5, scoring=metric))
+        print(f'{metric}: {metric_value:.2f}')
+
+
+
+
+
 if __name__ == "__main__":
     pass
