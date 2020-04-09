@@ -66,8 +66,13 @@ def print_model_results(model, X_train, y_train):
         print(f'{metric}: {metric_value:.2f}')
 
 
+def load_model_results():
+    """Returns a pandas DataFrame of model results from /models/model_results.csv
+    """
+    model_results_filepath = os.path.join(MODELS_DIRECTORY, 'model_results.csv')
+    df_results = pd.read_csv(model_results_filepath)
 
-
+    return df_results
 
 if __name__ == "__main__":
     pass
