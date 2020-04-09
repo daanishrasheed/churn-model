@@ -74,5 +74,13 @@ def load_model_results():
 
     return df_results
 
+def load_pickled_models(model_filename):
+    """Given the name of a pickled model, returns the unpickled model.
+    """
+    with open(os.path.join(MODELS_DIRECTORY, model_filename), 'rb') as f:
+        model = pickle.load(f)
+
+    return model
+
 if __name__ == "__main__":
     pass
