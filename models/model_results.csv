@@ -1,49 +1,13 @@
-accuracy,f1,model_filename,model_string,precision,recall,roc_auc
-0.7978803936411809,,2266940982478671616.pkl,"LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
-          intercept_scaling=1, max_iter=100, multi_class='warn',
-          n_jobs=None, penalty='l2', random_state=None, solver='warn',
-          tol=0.0001, verbose=0, warm_start=False)",,,
-0.7978803936411809,,423662964844168448.pkl,"LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
-          intercept_scaling=1, max_iter=100, multi_class='warn',
-          n_jobs=None, penalty='l2', random_state=None, solver='warn',
-          tol=0.0001, verbose=0, warm_start=False)",,,
-0.8025339726498668,0.8025339726498668,331554610981076992.pkl,"LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
-          intercept_scaling=1, max_iter=10000, multi_class='warn',
-          n_jobs=None, penalty='l2', random_state=None, solver='warn',
-          tol=0.0001, verbose=0, warm_start=False)",0.8025339726498668,0.8025339726498668,0.8025339726498668
-0.732297669218199,0.7326773530002006,1642225885339001088.pkl,"DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
-            max_features=None, max_leaf_nodes=None,
-            min_impurity_decrease=0.0, min_impurity_split=None,
-            min_samples_leaf=1, min_samples_split=2,
-            min_weight_fraction_leaf=0.0, presort=False, random_state=None,
-            splitter='best')",0.7347576402626071,0.7334358246609902,0.7294589102950029
-0.8000697012700325,0.8000697012700325,609847934726124544.pkl,"AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None,
-          learning_rate=1.0, n_estimators=50, random_state=None)",0.8000697012700325,0.8000697012700325,0.8000697012700325
-0.8013974298328603,0.8013974298328603,2187006730299694336.pkl,"GradientBoostingClassifier(criterion='friedman_mse', init=None,
-              learning_rate=0.1, loss='deviance', max_depth=3,
-              max_features=None, max_leaf_nodes=None,
-              min_impurity_decrease=0.0, min_impurity_split=None,
-              min_samples_leaf=1, min_samples_split=2,
-              min_weight_fraction_leaf=0.0, n_estimators=100,
-              n_iter_no_change=None, presort='auto', random_state=None,
-              subsample=1.0, tol=0.0001, validation_fraction=0.1,
-              verbose=0, warm_start=False)",0.8013974298328603,0.8015868237722543,0.8013974298328603
-0.7788676141739056,0.7788679725351911,768186897771883008.pkl,"RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-            max_depth=None, max_features='auto', max_leaf_nodes=None,
-            min_impurity_decrease=0.0, min_impurity_split=None,
-            min_samples_leaf=1, min_samples_split=2,
-            min_weight_fraction_leaf=0.0, n_estimators='warn', n_jobs=None,
-            oob_score=False, random_state=None, verbose=0,
-            warm_start=False)",0.7813308104698833,0.780760120122703,0.7809518434104528
-0.7383545124853073,0.7323001777471976,1756373218170905600.pkl,"DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion='gini',
+model_filename,model_string,accuracy,precision,recall,f1,roc_auc
+1039052407272937472.pkl,"DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion='gini',
                        max_depth=None, max_features=None, max_leaf_nodes=None,
                        min_impurity_decrease=0.0, min_impurity_split=None,
                        min_samples_leaf=1, min_samples_split=2,
                        min_weight_fraction_leaf=0.0, presort='deprecated',
-                       random_state=None, splitter='best')",0.7370318009804764,0.7305938404862247,0.7387340170866661
-0.8000697012700325,0.8000697012700325,664390599486068992.pkl,"AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None, learning_rate=1.0,
-                   n_estimators=50, random_state=None)",0.8000697012700325,0.8000697012700325,0.8000697012700325
-0.8013974298328603,0.8013974298328603,1062571721106432512.pkl,"GradientBoostingClassifier(ccp_alpha=0.0, criterion='friedman_mse', init=None,
+                       random_state=None, splitter='best')",0.7277554399243141,0.7220745176457097,0.7262401092285199,0.7283232633812105,0.7243474240990797
+183822185280526080.pkl,"AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None, learning_rate=1.0,
+                   n_estimators=50, random_state=None)",0.8000700596313178,0.8000700596313178,0.8000700596313178,0.8000700596313178,0.8000700596313178
+306603145201945600.pkl,"GradientBoostingClassifier(ccp_alpha=0.0, criterion='friedman_mse', init=None,
                            learning_rate=0.1, loss='deviance', max_depth=3,
                            max_features=None, max_leaf_nodes=None,
                            min_impurity_decrease=0.0, min_impurity_split=None,
@@ -52,38 +16,12 @@ accuracy,f1,model_filename,model_string,precision,recall,roc_auc
                            n_iter_no_change=None, presort='deprecated',
                            random_state=None, subsample=1.0, tol=0.0001,
                            validation_fraction=0.1, verbose=0,
-                           warm_start=False)",0.8015868237722543,0.8013974298328603,0.8013974298328603
-0.7896596642871477,0.7894682993606834,1438406011583622656.pkl,"RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None,
+                           warm_start=False)",0.8059403758493163,0.8059403758493163,0.8059403758493163,0.8059403758493163,0.8059403758493163
+1071220852651428096.pkl,"RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None,
                        criterion='gini', max_depth=None, max_features='auto',
                        max_leaf_nodes=None, max_samples=None,
                        min_impurity_decrease=0.0, min_impurity_split=None,
                        min_samples_leaf=1, min_samples_split=2,
                        min_weight_fraction_leaf=0.0, n_estimators=100,
                        n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)",0.7879544021100312,0.7873878329176343,0.7913627762965512
-0.7366512212952612,0.7355171870072532,1779006992822696192.pkl,"DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion='gini',
-                       max_depth=None, max_features=None, max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, presort='deprecated',
-                       random_state=None, splitter='best')",0.7347615822367478,0.7332449972764542,0.7345695005877124
-0.8000697012700325,0.8000697012700325,1866644684152677888.pkl,"AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None, learning_rate=1.0,
-                   n_estimators=50, random_state=None)",0.8000697012700325,0.8000697012700325,0.8000697012700325
-0.8015868237722543,0.8015868237722543,1098485581946604288.pkl,"GradientBoostingClassifier(ccp_alpha=0.0, criterion='friedman_mse', init=None,
-                           learning_rate=0.1, loss='deviance', max_depth=3,
-                           max_features=None, max_leaf_nodes=None,
-                           min_impurity_decrease=0.0, min_impurity_split=None,
-                           min_samples_leaf=1, min_samples_split=2,
-                           min_weight_fraction_leaf=0.0, n_estimators=100,
-                           n_iter_no_change=None, presort='deprecated',
-                           random_state=None, subsample=1.0, tol=0.0001,
-                           validation_fraction=0.1, verbose=0,
-                           warm_start=False)",0.8015868237722543,0.8013974298328603,0.8015868237722543
-0.7898490582265417,0.7877648289899946,1117805591751927296.pkl,"RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None,
-                       criterion='gini', max_depth=None, max_features='auto',
-                       max_leaf_nodes=None, max_samples=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=100,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)",0.7896593059258622,0.7892810555890026,0.7904167025027952
+                       verbose=0, warm_start=False)",0.7801944468335197,0.7747020225910954,0.7760295719732805,0.7811396247240617,0.7775409606949342
