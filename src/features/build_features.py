@@ -5,6 +5,7 @@ sys.path.append('.')
 import click
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
+from statsmodels.stats.outliers_influence import variance_inflation_factor
 from src.localpaths import *
 from src.data.make_dataset import load_training_data
 
@@ -22,6 +23,7 @@ def featurize_X_train(X_train):
     X_train['PhoneService']=X_train['PhoneService'].map({'Yes': 1, 'No': 0})
     X_train['PaperlessBilling']=X_train['PaperlessBilling'].map({'Yes': 1, 'No': 0})
     X_train = one_hot_encode_categorical_features(X_train)
+    X_train = drop_high_vif_features(X_train)
     return X_train
 
 
@@ -75,6 +77,23 @@ def one_hot_encode_categorical_features(X_train, save_encoder=True):
         with open(ohe_filepath, 'wb') as f:
             pickle.dump(ohe, f)
 
+    return X_train
+
+def drop_high_vif_features(X_train):
+    """Drops features with a variance inflation factor of greater than 10.
+    """
+    finished = False
+    while not finished:
+        vifs = [variance_inflation_factor(X_train.values, i) for i in range(X_train.shape[1])]
+        high_vifs = sorted(zip(X_train.columns, vifs), key=lambda x: x[1], reverse=True)
+        high_vif_col, high_vif_value = high_vifs[0]
+        if high_vif_value >= 10:
+            print(f"dropping column {high_vif_col} with vif value of {high_vif_value:.1f}")
+            X_train = X_train.drop(columns=[high_vif_col])
+        else:
+            print("finished dropping columns")
+            finished = True
+    
     return X_train
 
 def transform_target(y_train):
