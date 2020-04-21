@@ -25,3 +25,5 @@ model_filename,model_string,accuracy,precision,recall,f1,roc_auc
                        min_weight_fraction_leaf=0.0, n_estimators=100,
                        n_jobs=None, oob_score=False, random_state=None,
                        verbose=0, warm_start=False)",0.7801944468335197,0.7747020225910954,0.7760295719732805,0.7811396247240617,0.7775409606949342
+607043111193028608.pkl,"AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None, learning_rate=0.6,
+                   n_estimators=50, random_state=None)",0.8008279937501792,0.8008279937501792,0.8008279937501792,0.8008279937501792,0.8008279937501792
