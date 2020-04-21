@@ -23,7 +23,7 @@ def featurize_X(X, predict=False):
     X['PhoneService']=X['PhoneService'].map({'Yes': 1, 'No': 0})
     X['PaperlessBilling']=X['PaperlessBilling'].map({'Yes': 1, 'No': 0})
     X = one_hot_encode_categorical_features(X, predict=predict)
-    X = drop_high_vif_features(X)
+    X = drop_high_vif_features(X, predict=predict)
     return X
 
 
@@ -83,20 +83,32 @@ def one_hot_encode_categorical_features(X_train, save_encoder=True, predict=Fals
 
     return X_train
 
-def drop_high_vif_features(X_train):
+def drop_high_vif_features(X_train, predict=False):
     """Drops features with a variance inflation factor of greater than 10.
     """
-    finished = False
-    while not finished:
-        vifs = [variance_inflation_factor(X_train.values, i) for i in range(X_train.shape[1])]
-        high_vifs = sorted(zip(X_train.columns, vifs), key=lambda x: x[1], reverse=True)
-        high_vif_col, high_vif_value = high_vifs[0]
-        if high_vif_value >= 10:
-            print(f"dropping column {high_vif_col} with vif value of {high_vif_value:.1f}")
-            X_train = X_train.drop(columns=[high_vif_col])
-        else:
-            print("finished dropping columns")
-            finished = True
+    dropped_cols_pickle_filepath = os.path.join(SRC_FEATURES_DIRECTORY, 'cols-to-drop.pkl')
+    if predict:
+        print('loading columns to drop')
+        with open(dropped_cols_pickle_filepath, 'rb') as f:
+            cols_to_drop = pickle.load(f)
+        X_train = X_train.drop(columns=cols_to_drop)
+    else:
+        print('running VIF col-drop process')
+        finished = False
+        cols_to_drop = []
+        while not finished:
+            vifs = [variance_inflation_factor(X_train.values, i) for i in range(X_train.shape[1])]
+            high_vifs = sorted(zip(X_train.columns, vifs), key=lambda x: x[1], reverse=True)
+            high_vif_col, high_vif_value = high_vifs[0]
+            if high_vif_value >= 10:
+                print(f"dropping column {high_vif_col} with vif value of {high_vif_value:.1f}")
+                X_train = X_train.drop(columns=[high_vif_col])
+                cols_to_drop.append(high_vif_col)
+            else:
+                print("finished dropping columns")
+                finished = True
+        with open(dropped_cols_pickle_filepath, 'wb') as f:
+            pickle.dump(cols_to_drop, f)
     
     return X_train
 

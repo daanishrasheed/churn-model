@@ -30,12 +30,12 @@ def predict(file_name):
 
     # Clean and featurize our data
     X = clean_X(X)
-    X = featurize_X(X)
+    X = featurize_X(X, predict=True)
 
     # Make predictions
 
     # Print those predictions
-    print(X)
+    print(X.columns)
 
 
 
