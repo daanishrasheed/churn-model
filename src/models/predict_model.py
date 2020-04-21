@@ -29,6 +29,7 @@ def predict(file_name):
 
     # Clean and featurize our data
     X = clean_X(X)
+    X = featurize_X(X)
 
     # Make predictions
 

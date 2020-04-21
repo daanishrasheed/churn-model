@@ -13,18 +13,18 @@ from src.data.make_dataset import load_training_data
 def cli():
     pass
 
-def featurize_X_train(X_train):
-    """Applies all featurization steps to X_train
+def featurize_X(X):
+    """Applies all featurization steps to X
     """
-    X_train = drop_customer_id(X_train)
-    X_train['gender']=X_train['gender'].map({'Female': 1, 'Male': 0})
-    X_train['Partner']=X_train['Partner'].map({'Yes': 1, 'No': 0})
-    X_train['Dependents']=X_train['Dependents'].map({'Yes': 1, 'No': 0})
-    X_train['PhoneService']=X_train['PhoneService'].map({'Yes': 1, 'No': 0})
-    X_train['PaperlessBilling']=X_train['PaperlessBilling'].map({'Yes': 1, 'No': 0})
-    X_train = one_hot_encode_categorical_features(X_train)
-    X_train = drop_high_vif_features(X_train)
-    return X_train
+    X = drop_customer_id(X)
+    X['gender']=X['gender'].map({'Female': 1, 'Male': 0})
+    X['Partner']=X['Partner'].map({'Yes': 1, 'No': 0})
+    X['Dependents']=X['Dependents'].map({'Yes': 1, 'No': 0})
+    X['PhoneService']=X['PhoneService'].map({'Yes': 1, 'No': 0})
+    X['PaperlessBilling']=X['PaperlessBilling'].map({'Yes': 1, 'No': 0})
+    X = one_hot_encode_categorical_features(X)
+    X = drop_high_vif_features(X)
+    return X
 
 
 @cli.command()
@@ -36,7 +36,7 @@ def create_featurized_data():
     X_train, y_train = load_training_data(clean=True)
 
     print('featurizing data')
-    X_train = featurize_X_train(X_train)
+    X_train = featurize_X(X_train)
     y_train = transform_target(y_train)
 
     print('saving data')
