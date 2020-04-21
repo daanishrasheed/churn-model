@@ -10,6 +10,7 @@ import click
 
 from src.data.make_dataset import load_training_data, clean_X
 from src.localpaths import *
+from src.features.build_features import featurize_X
 
 
 @click.group()
