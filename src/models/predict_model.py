@@ -20,9 +20,7 @@ PICKLED_MODEL_FILENAME = "306603145201945600.pkl"
 def cli():
     pass
 
-@cli.command()
-@click.option('--file-name', type=str, required=True)
-def predict(file_name):
+def predict(file_name, proba = False):
     """Predicts 'churn' or 'not churn' for each row of data
     in file_name. The file must be comma delimited. Column
     names don't matter, but the order of the columns should 
@@ -39,13 +37,25 @@ def predict(file_name):
     model = load_pickled_models(PICKLED_MODEL_FILENAME)
 
     # Make predictions
-    predictions = model.predict_proba(X)[:,1]
+    if proba:
+        predictions = model.predict_proba(X)[:,1]
+    else:
+        predictions = model.predict(X)
 
-    # Print those predictions
+    # Return those predictions
+    return predictions
+
+@cli.command()
+@click.option('--file-name', type=str, required=True)
+def click_predict(file_name):
+    """Predicts 'churn' or 'not churn' for each row of data
+    in file_name. The file must be comma delimited. Column
+    names don't matter, but the order of the columns should 
+    be the same as the order of the original training data.
+    """
+
+    predictions = predict(file_name)
     print(predictions)
-
-
-
 
 if __name__ == "__main__":
     cli()
